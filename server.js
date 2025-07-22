@@ -5,7 +5,6 @@ import connectDB from "./config/mongodb.js";
 import connectCloudinary from "./config/cloudinary.js";
 import userRouter from "./Routes/userRoutes.js";
 import productRouter from "./Routes/productRoute.js";
-import upload from "./middleware/multer.js";
 import cartRouter from "./Routes/cartRoutes.js";
 import orderRouter from "./Routes/orderRoute.js";
 
@@ -27,7 +26,6 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl, Postman)
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -40,7 +38,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // Handle preflight requests
+app.options("*", cors(corsOptions)); // Preflight handling
 
 // API routes
 app.use("/api/user", userRouter);
@@ -53,7 +51,6 @@ app.get("/", (req, res) => {
   res.send("API working ✅");
 });
 
-// Start server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
