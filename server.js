@@ -20,8 +20,8 @@ connectCloudinary();
 app.use(express.json());
 
 const allowedOrigins = [
-  "https://e-commercer-website-for-clothes-frontend-iq9e.onrender.com", // frontend
-  "https://e-commercer-website-for-clothes-admin.onrender.com"         // admin panel
+  "https://e-commercer-website-for-clothes-frontend-iq9e.onrender.com", // user frontend
+  "https://e-commercer-website-for-clothes-admin.onrender.com"          // admin panel
 ];
 
 const corsOptions = {
@@ -32,13 +32,11 @@ const corsOptions = {
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true,
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeaders: ["Content-Type", "Authorization"]
+  credentials: true, // use this if you’re sending cookies/sessions
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // Preflight handling
+
 
 // API routes
 app.use("/api/user", userRouter);
