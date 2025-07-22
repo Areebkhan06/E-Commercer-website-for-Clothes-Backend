@@ -20,7 +20,10 @@ connectCloudinary();
 // middlewares
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "https://e-commercer-website-for-clothes-frontend-iq9e.onrender.com",
+  credentials: true // only if using sessions or cookies
+}));
 
 // APi endpoints
 
