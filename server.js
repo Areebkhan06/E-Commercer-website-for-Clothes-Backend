@@ -22,7 +22,7 @@ connectCloudinary();
 app.use(express.json());
 const allowedOrigins = [
   "https://e-commercer-website-for-clothes-frontend-iq9e.onrender.com", // main site
-  "https://your-admin-url.onrender.com" // admin panel
+  "https://e-commercer-website-for-clothes-frontend-iq9e.onrender.com" // admin panel
 ];
 
 app.use(cors({
